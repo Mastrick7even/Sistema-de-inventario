@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include <conio.h>
 
 typedef struct user
 {
@@ -60,9 +62,9 @@ typedef struct pc_escritorio
 } DESKTOP;
 
 int inicio_sesion(USER a);
+
 int main()
 {
-    // PRECARGA STRUCT
     // USER
     USER usuario1 = {991, "admin", "admin123", "Kylian", "Mbappe", "Lottin"};
     // MOUSE
@@ -84,19 +86,67 @@ int main()
 
     // INICIO DE SESION
     int inicia = 0;
+    int opcion, menu;
+    strcat(usuario1.nombres, " ");
+    strcat(usuario1.nombres, usuario1.apellidoPaterno);
+    strcat(usuario1.nombres, " ");
+    strcat(usuario1.nombres, usuario1.apellidoMaterno);
     inicia = inicio_sesion(usuario1);
     if (inicia == 0)
     {
-        inicia = inicio_sesion(usuario1);
+        printf("\nUsuario o contrasena mal ingresados \n");
+        system("pause");
+    }
+    else
+    {
+        system("cls");
+        printf("\nBIENVENIDO AL SISTEMA DE GESTION Y CONTROL DE PRODUCTOS AKME \n");
+        printf("\nNombre del usuario: %s \n\n", usuario1.nombres);
+        system("pause");
+    }
+
+    menu = inicia;
+
+    if (menu == 1)
+    {
         do
         {
-            inicia = inicio_sesion(usuario1);
-        } while (inicia == 0);
-    }
-    if (inicia == 1)
-    {
-        printf("\n \t BIENVENIDO AL SISTEMA \n");
-        system("pause");
+            fflush(stdin);
+            system("cls");
+
+            printf("\nNombre del usuario: %s \n\n", usuario1.nombres);
+            printf("Que deseas hacer?\n");
+            printf("\n1. Agregar un producto");
+            printf("\n2. Actualizar un producto");
+            printf("\n3. Listar los producto");
+            printf("\n4. Buscar un producto con su marca");
+            printf("\n5. Eliminar un producto");
+            printf("\n6. Salir del programa \n");
+            printf(">> ");
+            scanf("%d", &opcion);
+
+            switch (opcion)
+            {
+            case 1:
+                system("cls");
+                printf("hola");
+                getch();
+                break; // Funcion para agregar producto
+            case 2:    // Funcion para actualizar producto
+            case 3:    // Funcion para listar los productos
+            case 4:    // Funcion para busqueda por marca
+            case 5:    // Funcion para eliminar productos
+            case 6:
+                system("cls");
+                printf("Hasta pronto, que tenga un buen dia!");
+                break;
+            default:
+                system("cls");
+                printf("Opcion no valida, ingrese nuevamente");
+                getch();
+                break;
+            }
+        } while (opcion != 6);
     }
 
     return 0;
@@ -106,14 +156,16 @@ int inicio_sesion(USER a)
 {
     // INICIO DE SESION
     system("cls");
-    char usuario[20] = {a.nickname};
-    char clave[20] = {a.password};
+    char usuario[50];
+    char clave[50];
+    usuario[50] = a.nickname[50];
+    clave[50] = a.password[50];
     char caracter;
     int i = 0;
-    printf("\n\t\t INICIO DE SESION \n");
-    printf("\nUSUARIO:");
+    printf("INICIO DE SESION\n");
+    printf("USUARIO: ");
     gets(usuario);
-    printf("CLAVE:");
+    printf("CLAVE: ");
     while (caracter = getch())
     {
         if (caracter == 13)
@@ -143,8 +195,6 @@ int inicio_sesion(USER a)
     }
     else
     {
-        printf("\n Usuario o contrasena mal ingresados \n");
-        system("pause");
         return 0;
     }
 }
