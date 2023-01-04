@@ -2,8 +2,9 @@
 // Bastian Arriagada Quero
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
+#include <ctype.h>
+#include <time.h>
 #include <conio.h>
 
 typedef struct user
@@ -65,6 +66,7 @@ typedef struct pc_escritorio
 int inicio_sesion(USER a);
 void nombreVisible(USER a);
 
+//agregar productos
 MOUSE agregar_mouse(MOUSE productos_mouse[], int aux);
 void mostrar_mouse(MOUSE productos_mouse[], int aux);
 
@@ -77,12 +79,22 @@ void mostrar_monitor(MONITOR productos_monitor[], int aux);
 NOTEBOOK agregar_notebook(NOTEBOOK productos_notebook[], int aux);
 void mostrar_notebook(NOTEBOOK productos_notebook[], int aux);
 
+//menu para elegir tipo de producto
 void elegirProducto();
 
-MOUSE concatenar_mouseEliminar(MOUSE productos_mouse[], int aux);
-MOUSE eliminar_mouse(MOUSE productos_mouse[], int auxMouse, int aux);
+//mostrar productos concatenados
+void concatenar_mouse(MOUSE productos_mouse[], int aux);
+void concatenar_keyboard(KEYBOARD productos_keyboard[], int aux);
+void concatenar_monitor(MONITOR productos_monitor[], int aux);
+void concatenar_notebook(NOTEBOOK productos_notebook[], int aux);
 
-//FUNCION LISTAR PRODUCTOS
+//eliminar productos
+void eliminar_mouse(MOUSE productos_mouse[], int *aux);
+void eliminar_keyboard(KEYBOARD productos_keyboard[], int *aux);
+void eliminar_monitor(MONITOR productos_monitor[], int *aux);
+void eliminar_notebook(NOTEBOOK productos_notebook[], int *aux);
+
+//listar productos
 void listar_mouse(MOUSE productos_mouse[], int i);
 void listar_teclado(KEYBOARD productos_keyboard[], int i);
 void listar_monitor(MONITOR productos_monitor[], int i);
@@ -281,7 +293,7 @@ int main()
 
             case 4://BUSQUEDA POR MARCA (RECURSIVIDAD)
 
-            case 5://ELIMINAR PRODUCTO
+            case 5://ELIMINAR PRODUCTOS
                 do{
                     system("cls");
                     printf("Que tipo de producto deseas eliminar?\n");
@@ -291,37 +303,23 @@ int main()
                     switch (eliminar)
                     {
                         case 1:
-                            for (i = 0; i < auxMouse; i++)
-                            {
-                                listar_mouse(productos_mouse, i);
-                            }
-                            scanf("%d", &opEliminar);
-                            eliminar_mouse(productos_mouse,auxMouse, opEliminar);
-                            auxMouse--;
-                            system("pause");
+
+                            concatenar_mouse(productos_mouse, auxMouse);
+                            eliminar_mouse(productos_mouse, &auxMouse);
                             break;
 
                         case 2:
-                            for (i = 0; i < auxKeyboard; i++)
-                            {
-                                listar_teclado(productos_keyboard, i);
-                            }
-                            auxKeyboard--;
+                            concatenar_keyboard(productos_keyboard, auxKeyboard);
+                            eliminar_keyboard(productos_keyboard, &auxKeyboard);
                             break;
 
                         case 3:
-                            for (i = 0; i < auxMonitor; i++)
-                            {
-                                listar_monitor(productos_monitor, i);
-                            }
-                            auxMonitor--;
+                            concatenar_monitor(productos_monitor, auxMonitor);
+                            eliminar_monitor(productos_monitor, &auxMonitor);
                             break;
                         case 4:
-                            for (i = 0; i < auxNotebook; i++)
-                            {
-                                listar_notebook(productos_notebook, i);
-                            }
-                            auxNotebook--;
+                            concatenar_notebook(productos_notebook, auxNotebook);
+                            eliminar_notebook(productos_notebook, &auxNotebook);
                             break;
 
                         case 5:
@@ -566,32 +564,165 @@ void listar_notebook(NOTEBOOK productos_notebook[], int i)
     printf("Marca: %s \n", productos_notebook[i].marca);
     printf("Modelo: %s \n", productos_notebook[i].modelo);
     printf("Procesador: %s \n", productos_notebook[i].procesador);
-    printf("Tamano de pantalla: %.1f pulgadas \n\n", productos_notebook[i].tamanoPantalla);
+    printf("Tamano de pantalla: %.1f pulgadas \n", productos_notebook[i].tamanoPantalla);
     printf("Cantidad de ram: %d  \n\n", productos_notebook[i].ram);
 }
 
 
-//Funcion para mostrar productos detalladamente
-MOUSE concatenar_mouseEliminar(MOUSE productos_mouse[], int aux){
-        int i;
-        for(i = 0; i < aux; i++){
-            strcat(productos_mouse[i].marca, " ");
-            strcat(productos_mouse[i].marca, productos_mouse[i].modelo);
-            strcat(productos_mouse[i].marca, " ");
-            printf("Producto %d: %s \n\n",i+1, productos_mouse[i].marca);
-        }
-        system("pause");
-}
-//FUNCION PARA ELIMINAR PRODUCTOS
-MOUSE eliminar_mouse(MOUSE productos_mouse[], int auxMouse, int aux){
-    int i, aux1;
-    aux1 = aux-1;
-    for(i = 0; i <= auxMouse-aux; i++){
-        strcpy(productos_mouse[aux1].id, productos_mouse[aux1+1].id);
-        strcpy(productos_mouse[aux1].marca, productos_mouse[aux1+1].marca);
-        strcpy(productos_mouse[aux1].modelo, productos_mouse[aux1+1].modelo);
-        aux1++;
+//Funcion para mostrar productos con modelo concatenado
+void concatenar_mouse(MOUSE productos_mouse[], int aux)
+{
+    int i;
+    for(i = 0; i < aux; i++ )
+    {
+        char nombre[30];
+        memset(nombre, 0, 30);
+        strcat(nombre, productos_mouse[i].marca);
+        strcat(nombre, " ");
+        strcat(nombre, productos_mouse[i].modelo);
+        printf("Mouse Numero %d: %s", i+1, nombre);
+        printf(" (ID: %d)\n\n", productos_mouse[i].id);
+        
     }
-    printf("Producto eliminado\n");
-    system("pause");
+}
+
+void concatenar_keyboard(KEYBOARD productos_keyboard[], int aux)
+{
+    int i;
+    for(i = 0; i < aux; i++ )
+    {
+        char nombre[30];
+        memset(nombre, 0, 30);
+        strcat(nombre, productos_keyboard[i].marca);
+        strcat(nombre, " ");
+        strcat(nombre, productos_keyboard[i].modelo);
+        strcat(nombre, ", ");
+        strcat(nombre, productos_keyboard[i].idioma);
+        printf("Teclado Numero %d: %s", i+1, nombre);
+        printf(" (ID: %d)\n\n", productos_keyboard[i].id);
+        
+    }
+}
+void concatenar_monitor(MONITOR productos_monitor[], int aux)
+{
+    int i;
+    for(i = 0; i < aux; i++ )
+    {
+        char nombre[30];
+        memset(nombre, 0, 30);
+        strcat(nombre, productos_monitor[i].marca);
+        strcat(nombre, " ");
+        strcat(nombre, productos_monitor[i].modelo);
+        printf("Teclado Numero %d: %s", i+1, nombre);
+        printf(", %.1f pulgadas", productos_monitor[i].tamano);
+        printf(" (ID: %d)\n\n", productos_monitor[i].id);
+        
+    }
+}
+
+void concatenar_notebook(NOTEBOOK productos_notebook[], int aux)
+{
+    int i;
+    for(i = 0; i < aux; i++ )
+    {
+        char nombre[30];
+        memset(nombre, 0, 30);
+        strcat(nombre, productos_notebook[i].marca);
+        strcat(nombre, " ");
+        strcat(nombre, productos_notebook[i].modelo);
+        strcat(nombre, ", ");
+        strcat(nombre, productos_notebook[i].procesador);;
+        printf("Teclado Numero %d: %s", i+1, nombre);
+        printf(", %d gb ram", productos_notebook[i].ram);
+        printf(", %.1f pulgadas de pantalla", productos_notebook[i].tamanoPantalla);
+        printf(" (ID: %d)\n\n", productos_notebook[i].id);
+        
+    }
+}
+
+
+//FUNCION PARA ELIMINAR PRODUCTOS
+//Mouse
+void eliminar_mouse(MOUSE productos_mouse[], int *aux){
+    int i, j, eliminar;
+    printf("Ingrese N* de producto para eliminar:\n\n");
+    printf("Eliminar mouse N*: ");
+    fflush(stdin);
+    scanf("%d", &eliminar);
+    eliminar--;
+    
+        for(i = 0; i < *aux; i++)
+        {
+            if(eliminar == i)
+            {
+                for(j = i; j < *aux - 1; j++)
+                {
+                    productos_mouse[j] = productos_mouse[j+1]; 
+                }
+                *aux = *aux -1;
+            }
+        }
+}
+//Teclado
+void eliminar_keyboard(KEYBOARD productos_keyboard[], int *aux){
+    int i, j, eliminar;
+    printf("Ingrese N* de producto para eliminar:\n\n");
+    printf("Eliminar teclado N*: ");
+    fflush(stdin);
+    scanf("%d", &eliminar);
+    eliminar--;
+    
+        for(i = 0; i < *aux; i++)
+        {
+            if(eliminar == i)
+            {
+                for(j = i; j < *aux - 1; j++)
+                {
+                    productos_keyboard[j] = productos_keyboard[j+1]; 
+                }
+                *aux = *aux -1;
+            }
+        }
+}
+//Monitor
+void eliminar_monitor(MONITOR productos_monitor[], int *aux){
+    int i, j, eliminar;
+    printf("Ingrese N* de producto para eliminar:\n\n");
+    printf("Eliminar monitor N*: ");
+    fflush(stdin);
+    scanf("%d", &eliminar);
+    eliminar--;
+    
+        for(i = 0; i < *aux; i++)
+        {
+            if(eliminar == i)
+            {
+                for(j = i; j < *aux - 1; j++)
+                {
+                    productos_monitor[j] = productos_monitor[j+1]; 
+                }
+                *aux = *aux -1;
+            }
+        }
+}
+//Notebook
+void eliminar_notebook(NOTEBOOK productos_notebook[], int *aux){
+    int i, j, eliminar;
+    printf("Ingrese N* de producto para eliminar:\n\n");
+    printf("Eliminar producto N*: ");
+    fflush(stdin);
+    scanf("%d", &eliminar);
+    eliminar--;
+    
+        for(i = 0; i < *aux; i++)
+        {
+            if(eliminar == i)
+            {
+                for(j = i; j < *aux - 1; j++)
+                {
+                    productos_notebook[j] = productos_notebook[j+1]; 
+                }
+                *aux = *aux -1;
+            }
+        }
 }
