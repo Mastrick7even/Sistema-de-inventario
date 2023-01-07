@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <time.h>
 #include <conio.h>
+
 typedef struct user
 {
     int id;
@@ -15,6 +15,7 @@ typedef struct user
     char apellidoPaterno[30];
     char apellidoMaterno[30];
 } USER;
+
 
 typedef struct teclado
 {
@@ -143,6 +144,7 @@ int main()
     NOTEBOOK productos_notebook[100];
     precarga_notebook(productos_notebook);
 
+    //PC de escritorio
     int auxDesktop = 3;
     DESKTOP productos_desktop[100];
     precarga_desktop(productos_desktop);
@@ -155,21 +157,23 @@ int main()
         inicia = inicio_sesion(usuario1);
         if (inicia == 0)
         {
-            system("cls");
             printf("\033[0;31m");
-            printf("Credenciales erroneas, ingrese nuevamente. \n\n");
+            printf("\nCredenciales erroneas, ingrese nuevamente. \n\n");
             printf("\033[0m");
+            printf("\033[1;30m");
             system("pause");
+            printf("\033[0m");
         }
         else
         {
             system("cls");
             printf("\033[0;32m");
             bienvenido();
-            //printf("\t\t\t\tBienvenido al sistema de contro y gestion AKME.\n");
             printf("\033[0m");
             nombreVisible(usuario1);
+            printf("\033[1;30m");
             system("pause");
+            printf("\033[0m");
         }
     }while(inicia == 0);
     
@@ -201,7 +205,8 @@ int main()
             case 1://AGREGAR UN PRODUCTO
                 do{
                     system("cls");
-                    printf("\033[0;32m");
+                    nombreVisible(usuario1);
+                    printf("\033[1;32m");
                     printf("Que tipo de producto deseas agregar?\n");
                     printf("\033[0m");
                     elegirProducto();
@@ -209,56 +214,77 @@ int main()
 
                     switch (agregar)
                     {
-                        case 1:
+                        case 1://mouse
                             auxMouse++;
+                            system("cls");
+                            nombreVisible(usuario1);
                             agregar_mouse(productos_mouse, auxMouse);
                             printf("\033[0;32m");
                             printf("\nProducto agregado correctamente!\n\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 2:
+                        case 2://teclado
                             auxKeyboard++;
+                            system("cls");
+                            nombreVisible(usuario1);
                             agregar_teclado(productos_keyboard, auxKeyboard);
                             printf("\033[0;32m");
                             printf("\nProducto agregado correctamente!\n\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 3:
+                        case 3://monitor
                             auxMonitor++;
+                            system("cls");
+                            nombreVisible(usuario1);
                             agregar_monitor(productos_monitor, auxMonitor);
                             printf("\033[0;32m");
                             printf("\nProducto agregado correctamente!\n\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 4:
+                        case 4://notebook
                             auxNotebook++;
+                            system("cls");
+                            nombreVisible(usuario1);
                             agregar_notebook(productos_notebook, auxNotebook);
                             printf("\033[0;32m");
                             printf("\nProducto agregado correctamente!\n\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 5:
+                        case 5://desktop
                             auxDesktop++;
+                            system("cls");
+                            nombreVisible(usuario1);
                             agregar_desktop(productos_desktop, auxDesktop);
                             printf("\033[0;32m");
                             printf("\nProducto agregado correctamente!\n\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 6:
+                        case 6://salir
                             break;
 
-                        default:
+                        default://mal ingresado
                             system("cls");
+                            nombreVisible(usuario1);
                             printf("Opcion no valida, ingrese nuevamente");
                             getch();
                             break;
@@ -269,6 +295,7 @@ int main()
             case 2:// ACTUALIZAR UN PRODUCTO
             do{
                     system("cls");
+                    nombreVisible(usuario1);
                     printf("\033[0;32m");
                     printf("Que tipo de producto deseas actualizar?\n");
                     printf("\033[0m");
@@ -277,56 +304,67 @@ int main()
 
                     switch (actualizar)
                     {
-                        case 1:
+                        case 1://mouse
                             concatenar_mouse(productos_mouse, auxMouse);
                             actualizar_mouse(productos_mouse);
                             printf("\033[0;33m");
                             printf("\nProducto actualizado!\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 2:
+                        case 2://teclado
                             concatenar_keyboard(productos_keyboard, auxKeyboard);
                             actualizar_keyboard(productos_keyboard);
                             printf("\033[0;33m");
                             printf("\nProducto actualizado!\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 3:
+                        case 3://monitor
                             concatenar_monitor(productos_monitor, auxMonitor);
                             actualizar_monitor(productos_monitor);
                             printf("\033[0;33m");
                             printf("\nProducto actualizado!\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 4:
+                        case 4://notebook
                             concatenar_notebook(productos_notebook, auxNotebook);
                             actualizar_notebook(productos_notebook);
                             printf("\033[0;33m");
                             printf("\nProducto actualizado!\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 5:
+                        case 5://desktop
                             concatenar_desktop(productos_desktop, auxDesktop);
                             actualizar_desktop(productos_desktop);
                             printf("\033[0;33m");
                             printf("\nProducto actualizado!\n");
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 6:
+                        case 6://salir
                             break;
 
-                        default:
+                        default://mal ingresado
                             system("cls");
+                            nombreVisible(usuario1);
                             printf("Opcion no valida, ingrese nuevamente");
                             getch();
                             break;
@@ -337,12 +375,16 @@ int main()
             case 3:// LISTAR LOS PRODUCTOS
             
                 system("cls");
+                nombreVisible(usuario1);
+                printf("\033[1;34m");
+                printf("-------------------------------------\n");
+                printf("\033[0m");
                 printf("\033[0;32m");
                 printf("MOUSE:\n");
                 printf("\033[0m");
                 listar_mouse(productos_mouse, auxMouse);
                 
-                printf("\033[1;33m");
+                printf("\033[1;34m");
                 printf("-------------------------------------\n");
                 printf("\033[0m");
                 printf("\033[0;32m");
@@ -350,7 +392,7 @@ int main()
                 printf("\033[0m");
                 listar_teclado(productos_keyboard, auxKeyboard);
                 
-                printf("\033[1;33m");
+                printf("\033[1;34m");
                 printf("-------------------------------------\n");
                 printf("\033[0m");
                 printf("\033[0;32m");
@@ -358,7 +400,7 @@ int main()
                 printf("\033[0m");
                 listar_monitor(productos_monitor, auxMonitor);
                 
-                printf("\033[1;33m");
+                printf("\033[1;34m");
                 printf("-------------------------------------\n");
                 printf("\033[0m");
                 printf("\033[0;32m");
@@ -366,25 +408,34 @@ int main()
                 printf("\033[0m");
                 listar_notebook(productos_notebook, auxNotebook);
 
-                printf("\033[1;33m");
+                printf("\033[1;34m");
                 printf("-------------------------------------\n");
                 printf("\033[0m");
                 printf("\033[0;32m");
                 printf("PCs de escritorio.\n");
                 printf("\033[0m");
                 listar_desktop(productos_desktop, auxDesktop);
+                printf("\033[1;34m");
+                printf("-------------------------------------\n");
+                printf("\033[0m");
+                printf("\033[1;30m");
                 system("pause");
+                printf("\033[0m");
+
                 break;
 
             case 4://BUSQUEDA POR MARCA (RECURSIVIDAD)
             system("cls");
+            nombreVisible(usuario1);
             printf("\033[0;32m");     
             printf("Ingrese marca a buscar: ");
             printf("\033[0m");
-            scanf("%s", &marca);
+            fflush(stdin);
+            gets(marca);
             for(i = 0; marca[i] != '\0'; i++){
                 marca[i] = toupper(marca[i]);
             }
+    
             printf("\n\n");
             
             printf("Mouse: \n");
@@ -441,12 +492,15 @@ int main()
                 printf("No existen PCs de escritorio que correspondan a la marca ingresada.\n\n");
                 printf("\033[0m");
             }
+            printf("\033[1;30m");
             system("pause");
+            printf("\033[0m");
             break;
             
             case 5://ELIMINAR PRODUCTOS
                 do{
                     system("cls");
+                    nombreVisible(usuario1);
                     printf("\033[0;32m");
                     printf("Que tipo de producto deseas eliminar?\n");
                     printf("\033[0m");
@@ -455,60 +509,81 @@ int main()
 
                     switch (eliminar)
                     {
-                        case 1:
+                        case 1://mouse
                             system("cls");
+                            nombreVisible(usuario1);
+                            printf("Eliminar mouse: \n\n");
                             concatenar_mouse(productos_mouse, auxMouse);
                             eliminar_mouse(productos_mouse, &auxMouse);
                             printf("\033[0;31m");
                             printf("\n%c Producto eliminado %c\n\n", 207, 207);
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 2:
+                        case 2://teclado
                             system("cls");
+                            nombreVisible(usuario1);
+                            printf("Eliminar teclado: \n\n");
                             concatenar_keyboard(productos_keyboard, auxKeyboard);
                             eliminar_keyboard(productos_keyboard, &auxKeyboard);
                             printf("\033[0;31m");
                             printf("\n%c Producto eliminado %c\n\n", 207, 207);
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 3:
+                        case 3://monitor
                             system("cls");
+                            nombreVisible(usuario1);
+                            printf("Eliminar monitor: \n\n");
                             concatenar_monitor(productos_monitor, auxMonitor);
                             eliminar_monitor(productos_monitor, &auxMonitor);
                             printf("\033[0;31m");
                             printf("\n%c Producto eliminado %c\n\n\n\n", 207, 207);
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
-                        case 4:
+                        case 4://notebook
                             system("cls");
+                            nombreVisible(usuario1);
+                            printf("Eliminar notebook: \n\n");
                             concatenar_notebook(productos_notebook, auxNotebook);
                             eliminar_notebook(productos_notebook, &auxNotebook);
                             printf("\033[0;31m");
                             printf("\n%c Producto eliminado %c\n\n", 207, 207);
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
 
-                        case 5:
+                        case 5://desktop
                             system("cls");
+                            nombreVisible(usuario1);
+                            printf("Eliminar PC: \n\n");
                             concatenar_desktop(productos_desktop, auxDesktop);
                             eliminar_desktop(productos_desktop, &auxDesktop);
                             printf("\033[0;31m");
                             printf("\n%c Producto eliminado %c\n\n", 207, 207);
                             printf("\033[0m");
+                            printf("\033[1;30m");
                             system("pause");
+                            printf("\033[0m");
                             break;
                         
-                        case 6:
+                        case 6://salir
                             break;
 
-                        default:
+                        default://mal ingresado
                             system("cls");
+                            nombreVisible(usuario1);
                             printf("Opcion no valida, ingrese nuevamente");
                             getch();
                             break;
@@ -518,6 +593,7 @@ int main()
 
             case 6:
                 system("cls");
+                nombreVisible(usuario1);
                 logo_akme();
                 printf("\033[36m");
                 printf("\t\t\t\tHasta pronto, que tenga un buen dia!");
@@ -527,6 +603,7 @@ int main()
 
             default:
                 system("cls");
+                nombreVisible(usuario1);
                 printf("Opcion no valida, ingrese nuevamente");
                 getch();
             break;
@@ -537,7 +614,6 @@ int main()
 }
 
 //FUNCIONES:
-
 //VALIDAR CREDENCIALES DE INICIO DE SESION
 int inicio_sesion(USER a)
 {
@@ -550,7 +626,7 @@ int inicio_sesion(USER a)
     char caracter;
     int i = 0;
     logo_akme();
-    printf("\033[1;33m");
+    printf("\033[4;33m");
     printf("INICIO DE SESION\n\n");
     printf("\033[0m");
     printf("\033[36m");
@@ -602,7 +678,7 @@ void nombreVisible(USER a){
     printf("\t\t\t\tNombre del usuario: %s \n\n\n", a.nombres);
     printf("\033[0m");
 }
-//OPCIONES PARA ELEGIR EL PRODUCTO
+//OPCIONES PARA ELEGIR PRODUCTO
 void elegirProducto()
 {
     printf("\n1. Mouse");
@@ -621,14 +697,15 @@ MOUSE agregar_mouse(MOUSE productos_mouse[], int aux)
 {
     int i;
     char marca[30];
-    printf("\nAGREGAR MOUSE N*%d: \n\n", aux);
+    printf("AGREGAR MOUSE ");
+    printf("N%c%d: \n\n", 248, aux);
     printf("Ingrese ID: ");
     fflush(stdin);
     scanf("%d", &productos_mouse[aux-1].id);
     printf("Ingrese marca: ");
     fflush(stdin);
     gets(marca);
-    for(i = 0; marca[i] != '\0'; i++){
+    for(i = 0; marca[i] != '\0' ; i++){ 
             marca[i] = toupper(marca[i]);
         }
     strcpy(productos_mouse[aux-1].marca, marca);
@@ -642,7 +719,8 @@ KEYBOARD agregar_teclado(KEYBOARD productos_teclado[], int aux)
 {
     int i;
     char marca[30];
-    printf("\nAGREGAR TECLADO N*%d: \n\n", aux);
+    printf("AGREGAR TECLADO ");
+    printf("N%c%d: \n\n", 248, aux);
     printf("Ingrese ID: ");
     fflush(stdin);
     scanf("%d", &productos_teclado[aux-1].id);
@@ -666,7 +744,8 @@ MONITOR agregar_monitor(MONITOR productos_monitor[], int aux)
 {
     int i;
     char marca[30];
-    printf("\nAGREGAR MONITOR N*%d: \n\n", aux);
+    printf("AGREGAR MONITOR ");
+    printf("N%c%d: \n\n", 248, aux);
     printf("Ingrese ID: ");
     fflush(stdin);
     scanf("%d", &productos_monitor[aux-1].id);
@@ -690,7 +769,8 @@ NOTEBOOK agregar_notebook(NOTEBOOK productos_notebook[], int aux)
 {
     int i;
     char marca[30];
-    printf("\nAGREGAR NOTEBOOK N*%d: \n\n", aux);
+    printf("AGREGAR NOTEBOOK ");
+    printf("N%c%d: \n\n", 248, aux);
     printf("Ingrese ID: ");
     fflush(stdin);
     scanf("%d", &productos_notebook[aux-1].id);
@@ -720,7 +800,8 @@ DESKTOP agregar_desktop(DESKTOP productos_desktop[], int aux)
 {
     int i;
     char marca[30];
-    printf("\nAGREGAR DESKTOP N*%d: \n\n", aux);
+    printf("AGREGAR PC ");
+    printf("N%c%d: \n\n", 248, aux);
     printf("Ingrese ID: ");
     scanf("%d", &productos_desktop[aux-1].id);
     printf("Ingrese marca: ");
@@ -756,7 +837,7 @@ DESKTOP agregar_desktop(DESKTOP productos_desktop[], int aux)
 void listar_mouse(MOUSE productos_mouse[], int aux)
 {
     int i;
-    printf("\033[1;34m");
+    printf("\033[1;33m");
     printf("Stock disponible: %d \n\n", aux);
     printf("\033[0m");
     for(i = 0; i < aux; i++){
@@ -769,7 +850,7 @@ void listar_mouse(MOUSE productos_mouse[], int aux)
 void listar_teclado(KEYBOARD productos_keyboard[], int aux)
 {
     int i;
-    printf("\033[1;34m");
+    printf("\033[1;33m");
     printf("Stock disponible: %d \n\n", aux);
     printf("\033[0m");
     for(i = 0; i < aux; i++){
@@ -783,7 +864,7 @@ void listar_teclado(KEYBOARD productos_keyboard[], int aux)
 void listar_monitor(MONITOR productos_monitor[], int aux)
 {
     int i;
-    printf("\033[1;34m");
+    printf("\033[1;33m");
     printf("Stock disponible: %d \n\n", aux);
     printf("\033[0m");
     for(i = 0; i < aux; i++){
@@ -797,7 +878,7 @@ void listar_monitor(MONITOR productos_monitor[], int aux)
 void listar_notebook(NOTEBOOK productos_notebook[], int aux)
 {
     int i;
-    printf("\033[1;34m");
+    printf("\033[1;33m");
     printf("Stock disponible: %d \n\n", aux);
     printf("\033[0m");
     for(i = 0; i < aux; i++){
@@ -813,7 +894,7 @@ void listar_notebook(NOTEBOOK productos_notebook[], int aux)
 void listar_desktop(DESKTOP productos_desktop[], int aux)
 {
     int i;
-    printf("\033[1;34m");
+    printf("\033[1;33m");
     printf("Stock disponible: %d \n\n", aux);
     printf("\033[0m");
     for(i = 0; i < aux; i++){
@@ -839,7 +920,10 @@ void concatenar_mouse(MOUSE productos_mouse[], int aux)
         strcat(nombre, productos_mouse[i].marca);
         strcat(nombre, " ");
         strcat(nombre, productos_mouse[i].modelo);
-        printf("%d. %s\n\n", i+1, nombre);
+        printf("\033[0;31m");
+        printf("%d. ", i+1);
+        printf("\033[0m");
+        printf("%s\n\n", nombre);
         
     }
 }
@@ -855,8 +939,10 @@ void concatenar_keyboard(KEYBOARD productos_keyboard[], int aux)
         strcat(nombre, productos_keyboard[i].modelo);
         strcat(nombre, ", ");
         strcat(nombre, productos_keyboard[i].idioma);
-        printf("%d. %s", i+1, nombre);
-        printf(" (ID: %d)\n\n", productos_keyboard[i].id);
+        printf("\033[0;31m");
+        printf("%d. ", i+1);
+        printf("\033[0m");
+        printf("%s\n\n", nombre);
         
     }
 }
@@ -870,10 +956,11 @@ void concatenar_monitor(MONITOR productos_monitor[], int aux)
         strcat(nombre, productos_monitor[i].marca);
         strcat(nombre, " ");
         strcat(nombre, productos_monitor[i].modelo);
-        printf("%d. %s", i+1, nombre);
-        printf(", %.1f pulgadas", productos_monitor[i].tamano);
-        printf(" (ID: %d)\n\n", productos_monitor[i].id);
-        
+        printf("\033[0;31m");
+        printf("%d. ", i+1);
+        printf("\033[0m");
+        printf("%s", nombre);
+        printf(", %.1f pulgadas\n\n", productos_monitor[i].tamano);
     }
 }
 void concatenar_notebook(NOTEBOOK productos_notebook[], int aux)
@@ -888,11 +975,12 @@ void concatenar_notebook(NOTEBOOK productos_notebook[], int aux)
         strcat(nombre, productos_notebook[i].modelo);
         strcat(nombre, ", ");
         strcat(nombre, productos_notebook[i].procesador);;
-        printf("%d. %s", i+1, nombre);
+        printf("\033[0;31m");
+        printf("%d. ", i+1);
+        printf("\033[0m");
+        printf("%s", nombre);
         printf(", %dgb ram", productos_notebook[i].ram);
-        printf(", %.1f pulgadas de pantalla", productos_notebook[i].tamanoPantalla);
-        printf(" (ID: %d)\n\n", productos_notebook[i].id);
-        
+        printf(", %.1f pulgadas de pantalla\n\n", productos_notebook[i].tamanoPantalla);
     }
 }
 void concatenar_desktop(DESKTOP productos_desktop[], int aux)
@@ -907,19 +995,22 @@ void concatenar_desktop(DESKTOP productos_desktop[], int aux)
         strcat(nombre, productos_desktop[i].modelo);
         strcat(nombre, ", ");
         strcat(nombre, productos_desktop[i].procesador);
-        printf("%d. %s", i+1, nombre);
-        printf(", %dgb ram", productos_desktop[i].ram);
-        printf(" (ID: %d)\n\n", productos_desktop[i].id);
-        
+        printf("\033[0;31m");
+        printf("%d. ", i+1);
+        printf("\033[0m");
+        printf("%s", nombre);
+        printf(", %dgb ram\n\n", productos_desktop[i].ram);
     }
 }
 
 //ELIMINAR PRODUCTOS
 void eliminar_mouse(MOUSE productos_mouse[], int *aux){
     int i, j, eliminar;
-    printf("Ingrese N* de producto para eliminar:\n\n");
-    printf("Eliminar mouse N*: ");
-    fflush(stdin);
+    printf("Ingrese ");
+    printf("\033[0;31m");
+    printf("N%c ", 248); 
+    printf("\033[0m");
+    printf("(segun enumeracion) del mouse para eliminar: ");
     scanf("%d", &eliminar);
     eliminar--;
     
@@ -937,9 +1028,11 @@ void eliminar_mouse(MOUSE productos_mouse[], int *aux){
 }
 void eliminar_keyboard(KEYBOARD productos_keyboard[], int *aux){
     int i, j, eliminar;
-    printf("Ingrese N* de producto para eliminar:\n\n");
-    printf("Eliminar teclado N*: ");
-    fflush(stdin);
+    printf("Ingrese ");
+    printf("\033[0;31m");
+    printf("N%c ", 248); 
+    printf("\033[0m");
+    printf("(segun enumeracion) del teclado para eliminar: ");
     scanf("%d", &eliminar);
     eliminar--;
     
@@ -957,9 +1050,11 @@ void eliminar_keyboard(KEYBOARD productos_keyboard[], int *aux){
 }
 void eliminar_monitor(MONITOR productos_monitor[], int *aux){
     int i, j, eliminar;
-    printf("Ingrese N* de producto para eliminar:\n\n");
-    printf("Eliminar monitor N*: ");
-    fflush(stdin);
+    printf("Ingrese ");
+    printf("\033[0;31m");
+    printf("N%c ", 248); 
+    printf("\033[0m");
+    printf("(segun enumeracion) del monitor para eliminar: ");
     scanf("%d", &eliminar);
     eliminar--;
     
@@ -977,9 +1072,11 @@ void eliminar_monitor(MONITOR productos_monitor[], int *aux){
 }
 void eliminar_notebook(NOTEBOOK productos_notebook[], int *aux){
     int i, j, eliminar;
-    printf("Ingrese N* de producto para eliminar:\n\n");
-    printf("Eliminar producto N*: ");
-    fflush(stdin);
+    printf("Ingrese ");
+    printf("\033[0;31m");
+    printf("N%c ", 248); 
+    printf("\033[0m");
+    printf("(segun enumeracion) del notebook para eliminar: ");
     scanf("%d", &eliminar);
     eliminar--;
     
@@ -997,9 +1094,11 @@ void eliminar_notebook(NOTEBOOK productos_notebook[], int *aux){
 }
 void eliminar_desktop(DESKTOP productos_desktop[], int *aux){
     int i, j, eliminar;
-    printf("Ingrese N* de producto para eliminar:\n\n");
-    printf("Eliminar producto N*: ");
-    fflush(stdin);
+    printf("Ingrese ");
+    printf("\033[0;31m");
+    printf("N%c ", 248); 
+    printf("\033[0m");
+    printf("(segun enumeracion) del PC para eliminar: ");
     scanf("%d", &eliminar);
     eliminar--;
     
@@ -1016,7 +1115,7 @@ void eliminar_desktop(DESKTOP productos_desktop[], int *aux){
         }
 }
 
-//FUNCION PARA ACTUALIZAR PRODUCTOS 
+//ACTUALIZAR PRODUCTOS 
 MOUSE actualizar_mouse(MOUSE productos_mouse[])
 {
     int i;
@@ -1183,7 +1282,7 @@ DESKTOP actualizar_desktop(DESKTOP productos_desktop[])
     return productos_desktop[actualizar];
 }
 
-//FUNCION RECURSIVA BUSQUEDA POR MARCA
+//BUSQUEDA POR MARCA (RECURSIVA)
 int busquedaMarcaMouse(MOUSE productos_mouse[], int aux, char marca[], int bandera)
 {
     if(aux == -1){
@@ -1286,6 +1385,7 @@ int busquedaMarcaDesktop(DESKTOP productos_desktop[], int aux, char marca[], int
     } 
 }
 
+//MOSTRAR PRODUCTOS EN UN FORMATO "FORMAL"
 void mostrar_mouse(MOUSE productos_mouse[], int aux)
 {
     printf("\nID: %d \n", productos_mouse[aux].id);
@@ -1326,34 +1426,35 @@ void mostrar_desktop(DESKTOP productos_desktop[], int aux)
     printf("Monitor: %s \n", productos_desktop[aux].monitor.modelo);
 }
 
+//PRODUCTOS PRECARGADOS DE CADA TIP (3)
 void precarga_mouse(MOUSE productos_mouse[]){
             productos_mouse[0].id = 11897;
-    strncpy(productos_mouse[0].marca, "LOGITECH", 30);
-    strncpy(productos_mouse[0].modelo, "G502 HERO", 30);
+    strncpy(productos_mouse[0].marca, "COOLER MASTER", 30);
+    strncpy(productos_mouse[0].modelo, "MM711", 30);
 
             productos_mouse[1].id = 11001;
     strncpy(productos_mouse[1].marca,  "HYPERX",30);
-    strncpy(productos_mouse[1].modelo, "FPS PRO",30);
+    strncpy(productos_mouse[1].modelo, "Fps Pro",30);
 
             productos_mouse[2].id = 11034;
     strncpy(productos_mouse[2].marca,"LOGITECH",30);
-    strncpy(productos_mouse[2].modelo, "LIGHTSPEED",30);
+    strncpy(productos_mouse[2].modelo, "Lightspeed",30);
 }
 void precarga_teclado(KEYBOARD productos_keyboard[]){
     productos_keyboard[0].id = 11898;
     strncpy(productos_keyboard[0].marca,"HYPERX",30); 
-    strncpy(productos_keyboard[0].modelo,"ALLOY CORE RGB",30);
-    strncpy(productos_keyboard[0].idioma,"INGLES",30);
+    strncpy(productos_keyboard[0].modelo,"Alloy core RGB",30);
+    strncpy(productos_keyboard[0].idioma,"Ingles",30);
 
             productos_keyboard[1].id = 11937;
     strncpy(productos_keyboard[1].marca,"RAZER",30); 
-    strncpy(productos_keyboard[1].modelo,"BLACKWIDOW",30);
-    strncpy(productos_keyboard[1].idioma,"INGLES",30);
+    strncpy(productos_keyboard[1].modelo,"Blackwidow",30);
+    strncpy(productos_keyboard[1].idioma,"Espanol",30);
 
             productos_keyboard[2].id = 11907;
     strncpy(productos_keyboard[2].marca,"RAZER",30); 
     strncpy(productos_keyboard[2].modelo,"CHROMA",30);
-    strncpy(productos_keyboard[2].idioma,"INGLES",30);
+    strncpy(productos_keyboard[2].idioma,"Ingles",30);
 }
 void precarga_monitor(MONITOR productos_monitor[]){
     productos_monitor[0].id = 39453;
@@ -1422,6 +1523,7 @@ void precarga_desktop(DESKTOP productos_desktop[]){
     strncpy(productos_desktop[2].monitor.modelo, "APPLE STUDIO DISPLAY HDR", 30);
 }
 
+//TEXTOS A ASCII
 void logo_akme()
 { 
 printf("\033[0;32m");
@@ -1437,7 +1539,6 @@ printf(" \
 printf("\033[0m");
 printf("\n\n");
 }
-
 void bienvenido(){
     printf("\033[0;32m");
     printf(" \
