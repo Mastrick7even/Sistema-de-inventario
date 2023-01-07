@@ -1,5 +1,12 @@
 // Diego Vargas Gomez: 21.012.009-2
 // Bastian Arriagada Quero: 21.213.125-3
+
+/*
+CREDENCIALES DE INGRESO LOGIN:
+USUARIO: admin (minuscula)
+CLAVE: admin123 (minuscula)
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -63,7 +70,6 @@ typedef struct pc_escritorio
 } DESKTOP;
 
 //PROTOTIPOS DE FUNCIONES
-
 void precarga_mouse(MOUSE productos_mouse[]);
 void precarga_teclado(KEYBOARD productos_keyboard[]);
 void precarga_monitor(MONITOR productos_monitor[]);
@@ -1432,11 +1438,11 @@ void precarga_mouse(MOUSE productos_mouse[]){
     strncpy(productos_mouse[0].marca, "COOLER MASTER", 30);
     strncpy(productos_mouse[0].modelo, "MM711", 30);
 
-            productos_mouse[1].id = 11001;
+            productos_mouse[1].id = 14251;
     strncpy(productos_mouse[1].marca,  "HYPERX",30);
     strncpy(productos_mouse[1].modelo, "Fps Pro",30);
 
-            productos_mouse[2].id = 11034;
+            productos_mouse[2].id = 15944;
     strncpy(productos_mouse[2].marca,"LOGITECH",30);
     strncpy(productos_mouse[2].modelo, "Lightspeed",30);
 }
@@ -1446,28 +1452,28 @@ void precarga_teclado(KEYBOARD productos_keyboard[]){
     strncpy(productos_keyboard[0].modelo,"Alloy core RGB",30);
     strncpy(productos_keyboard[0].idioma,"Ingles",30);
 
-            productos_keyboard[1].id = 11937;
+            productos_keyboard[1].id = 42342;
     strncpy(productos_keyboard[1].marca,"RAZER",30); 
     strncpy(productos_keyboard[1].modelo,"Blackwidow",30);
     strncpy(productos_keyboard[1].idioma,"Espanol",30);
 
             productos_keyboard[2].id = 11907;
     strncpy(productos_keyboard[2].marca,"RAZER",30); 
-    strncpy(productos_keyboard[2].modelo,"CHROMA",30);
+    strncpy(productos_keyboard[2].modelo,"Chroma",30);
     strncpy(productos_keyboard[2].idioma,"Ingles",30);
 }
 void precarga_monitor(MONITOR productos_monitor[]){
     productos_monitor[0].id = 39453;
     strncpy(productos_monitor[0].marca,"ASUS",30);
-    strncpy(productos_monitor[0].modelo, "TUF GAMING",30);
+    strncpy(productos_monitor[0].modelo, "TUF Gaming",30);
             productos_monitor[0].tamano =27;
 
-            productos_monitor[1].id = 39453;
+            productos_monitor[1].id = 49354;
     strncpy(productos_monitor[1].marca,"SAMSUNG",30);
     strncpy(productos_monitor[1].modelo, "C24RG50",30);
             productos_monitor[1].tamano =24;
 
-            productos_monitor[2].id = 39106;
+            productos_monitor[2].id = 19479;
     strncpy(productos_monitor[2].marca,"VIEWSONIC",30);
     strncpy(productos_monitor[2].modelo, "VX3218-PC-MHD",30);
             productos_monitor[2].tamano = 32;
@@ -1480,14 +1486,14 @@ void precarga_notebook(NOTEBOOK productos_notebook[]){
             productos_notebook[0].tamanoPantalla =  15.6;
             productos_notebook[0].ram =  16;
 
-            productos_notebook[1].id = 45475;
+            productos_notebook[1].id = 07434;
     strncpy(productos_notebook[1].marca,"HP",30);
     strncpy(productos_notebook[1].modelo,"VICTUS 16-D0511LA",30);
     strncpy(productos_notebook[1].procesador,"INTEL CORE I5-11400H",30);
             productos_notebook[1].tamanoPantalla =  16.1;
             productos_notebook[1].ram =  8;
 
-            productos_notebook[2].id = 45936;
+            productos_notebook[2].id = 89324;
     strncpy(productos_notebook[2].marca,"ASUS",30);
     strncpy(productos_notebook[2].modelo,"TUF GAMING A15",30);
     strncpy(productos_notebook[2].procesador,"AMD RYZEN 5 4600H",30);
@@ -1495,32 +1501,32 @@ void precarga_notebook(NOTEBOOK productos_notebook[]){
             productos_notebook[2].ram =  8;
 }
 void precarga_desktop(DESKTOP productos_desktop[]){
-            productos_desktop[0].id = 73193;
+            productos_desktop[0].id = 54334;
     strncpy(productos_desktop[0].marca,"OLIDATA",30);
-    strncpy(productos_desktop[0].modelo,"GAMER PC",30);
-    strncpy(productos_desktop[0].procesador,"INTEL CORE 2 DUO",30);
+    strncpy(productos_desktop[0].modelo,"Gamer PC",30);
+    strncpy(productos_desktop[0].procesador,"Intel core 2 duo",30);
             productos_desktop[0].ram =  16;
-    strncpy(productos_desktop[0].mouse.modelo, "OLIDATA GENERIC MOUSE", 30);
-    strncpy(productos_desktop[0].teclado.modelo, "OLIDATA GENERIC KEYBOARD", 30);
-    strncpy(productos_desktop[0].monitor.modelo, "SAMSUNG SCREEN", 30);
+    strncpy(productos_desktop[0].mouse.modelo, "Mouse generico", 30);
+    strncpy(productos_desktop[0].teclado.modelo, "Teclado generico", 30);
+    strncpy(productos_desktop[0].monitor.modelo, "Samsung VSA", 30);
 
-            productos_desktop[1].id = 14321;
+            productos_desktop[1].id = 98140;
     strncpy(productos_desktop[1].marca,"GEAR",30);
-    strncpy(productos_desktop[1].modelo,"WORKSPACE PC",30);
-    strncpy(productos_desktop[1].procesador,"RYZEN 5 1600X",30);
+    strncpy(productos_desktop[1].modelo,"Workspace PC",30);
+    strncpy(productos_desktop[1].procesador,"Ryzen 1600X",30);
             productos_desktop[1].ram =  8;
-    strncpy(productos_desktop[1].mouse.modelo, "HP MOUSE WORKSPACE", 30);
-    strncpy(productos_desktop[1].teclado.modelo, "HP TECLADO WORK", 30);
-    strncpy(productos_desktop[1].monitor.modelo, "GEAR GAMER SCREEN", 30);
+    strncpy(productos_desktop[1].mouse.modelo, "HP mouse work", 30);
+    strncpy(productos_desktop[1].teclado.modelo, "HP teclado work", 30);
+    strncpy(productos_desktop[1].monitor.modelo, "Gear gamer monitor", 30);
 
             productos_desktop[2].id = 14321;
     strncpy(productos_desktop[2].marca,"APPLE",30);
-    strncpy(productos_desktop[2].modelo,"IMAC",30);
-    strncpy(productos_desktop[2].procesador,"CHIP M1",30);
+    strncpy(productos_desktop[2].modelo,"IMac",30);
+    strncpy(productos_desktop[2].procesador,"Chip M1",30);
             productos_desktop[2].ram =  32;
-    strncpy(productos_desktop[2].mouse.modelo, "APPLE MAGIC MOUSE", 30);
-    strncpy(productos_desktop[2].teclado.modelo, "APPLE MAGIC KEYBOARD", 30);
-    strncpy(productos_desktop[2].monitor.modelo, "APPLE STUDIO DISPLAY HDR", 30);
+    strncpy(productos_desktop[2].mouse.modelo, "Apple magic mouse", 30);
+    strncpy(productos_desktop[2].teclado.modelo, "Apple magic mouse", 30);
+    strncpy(productos_desktop[2].monitor.modelo, "Apple studio display HDR", 30);
 }
 
 //TEXTOS A ASCII
